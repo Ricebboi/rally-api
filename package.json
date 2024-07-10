@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "vercel dev",
-    "build": "vercel build"
+    "build": "echo 'No build step necessary'"
   },
   "keywords": [],
   "author": "",
