@@ -1,10 +1,14 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 module.exports = async (req, res) => {
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', ['POST']);
+    return res.status(405).end(`Method ${req.method} Not Allowed`);
+  }
+
   const { amount, currency, paymentMethodId, coachAccountId } = req.body;
 
   try {
-    // Create a Payment Intent
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
       currency: currency,
@@ -12,12 +16,10 @@ module.exports = async (req, res) => {
       confirm: true,
     });
 
-    // Calculate service fee and coach payout
     const serviceFee = amount * 0.15; // 15% service fee
     const coachPayout = amount - serviceFee;
 
-    // Transfer coach payout to connected account
-    await stripe.transfers.create({
+    const transfer = await stripe.transfers.create({
       amount: coachPayout,
       currency: currency,
       destination: coachAccountId,

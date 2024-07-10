@@ -1,14 +1,16 @@
 {
-  "name": "rally-stripe",
+  "name": "rally-api",
   "version": "1.0.0",
+  "description": "API for Rally",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "vercel dev",
+    "build": "vercel build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "stripe": "^16.2.0"
   }
