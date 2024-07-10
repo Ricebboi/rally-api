@@ -1,17 +1,14 @@
 {
   "name": "rally-api",
   "version": "1.0.0",
-  "description": "API for Rally",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "vercel dev",
-    "build": "echo 'No build step necessary'"
+    "start": "node api/create-coach-account.js",
+    "build": "echo 'Nothing to build'"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "stripe": "^16.2.0"
-  }
+  },
+  "license": "ISC",
+  "description": "Rally API for Stripe integration"
 }
